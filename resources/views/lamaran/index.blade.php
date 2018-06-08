@@ -3,9 +3,10 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-			<div class="panel panel-danger">
-			  <div class="panel-heading"><font color ="blue">Data lamaran</font>
-			  	<div class="panel-title pull-right"><a href="{{ route('lamaran.create') }}">Tambah</a>
+			<div class="panel panel-succes">
+			  <div class="panel-heading">
+			  	 <div class="panel-heading"><a href="{{ route('lamaran.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small"> <i class="zmdi zmdi-plus"></i> Add</a>
+			  	
 			  	</div>
 			  </div>
 			  <div class="panel-body">
@@ -26,7 +27,7 @@
 				  		@foreach($lar as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td>{{ $data->file_cv }}</td>
+				    	<td><img src="{{ asset('assets/cv/'.$data->cv) }}" /></td>
 				    	<td><p>{{ $data->status }}</p></td>
 				    	<td><p>{{ $data->Lowongan->nama_low }}</p></td>
 				    	

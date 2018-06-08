@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,6 +14,7 @@
 
     <!-- Title Page-->
     <title>LokerBandung</title>
+    <link href="{{ asset('Bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('assets/admin/css/font-face.css') }}" rel="stylesheet" media="all">
@@ -59,7 +63,10 @@
 
     </div>
 </div>
-
+    
+    <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('Bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- Jquery JS-->
     <script src="{{ asset('assets/admin/vendor/jquery-3.2.1.min.js') }}"></script>
     <!-- Bootstrap JS-->

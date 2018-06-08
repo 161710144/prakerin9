@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Lowongan;
 use App\Lamaran;
+use File;
 use Illuminate\Http\Request;
 
 class LamaranController extends Controller
@@ -53,6 +54,14 @@ class LamaranController extends Controller
         "level"=>"success",
         "message"=>"Berhasil menyimpan <b>$lar->file_cv</b>"
         ]);
+        if ($request->hasFile('cv')) {
+            $file = $request->file('cv');
+            $filename = str_random(6).'_'.$file->getClientOriginalName();
+            $destinationPath = public_path().'/assets/cv/';
+            $uploadSucces = $file->move($destinationPath, $filename);
+            $lar->cv = $filename;
+        }
+        $lar->save();
         return redirect()->route('lamaran.index');
     }
 

@@ -41,18 +41,20 @@ class PerusahaanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
+            'nama_pers' => 'required|max:191',
             'logo' => 'required|',
             'deskripsi' => 'required|max:255',
             'kategori' => 'required|max:115',
             'subkategori' => 'required|max:115',
             'judul' => 'required|max:50',
-            'gaji' => 'required|',
+            'gaji' => 'required|max:225',
             'tgl_mulai' => 'required|',
             'email' => 'required|unique:perusahaans',
             'telepon' => 'required|',
             'user_id' => 'required|'
         ]);
         $per = new Perusahaan;
+        $per->nama_pers = $request->nama_pers;
         $per->logo = $request->logo;
         $per->deskripsi = $request->deskripsi;
         $per->kategori = $request->kategori;
@@ -117,7 +119,7 @@ class PerusahaanController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'logo' => 'required|',
+            'nama_pers' => 'required|max:191',
             'deskripsi' => 'required|max:255',
             'kategori' => 'required|max:115',
             'subkategori' => 'required|max:115',
@@ -129,7 +131,7 @@ class PerusahaanController extends Controller
             'user_id' => 'required|'
         ]);
         $per = Perusahaan::findOrFail($id);
-        $per->logo = $request->logo;
+        $per->nama_pers = $request->nama_pers;
         $per->deskripsi = $request->deskripsi;
         $per->kategori = $request->kategori;
         $per->subkategori = $request->subkategori;
@@ -145,24 +147,24 @@ class PerusahaanController extends Controller
         "message"=>"Berhasil mengedit <b>$per->logo</b>"
         ]);
         //edit upload foto
-        if ($request->hasFile('logo')){
-            $file = $request->file('logo');
-            $destinationPath = public_path().'/assets/img/logopers/';
-            $filename = str_random(6).'_'.$file->getClientOriginalName();
-            $uploadSucces = $file->move($destinationPath, $filename);
+        // if ($request->hasFile('logo')){
+        //     $file = $request->file('logo');
+        //     $destinationPath = public_path().'/assets/img/logopers/';
+        //     $filename = str_random(6).'_'.$file->getClientOriginalName();
+        //     $uploadSucces = $file->move($destinationPath, $filename);
 
-            //hapus foto lama
-            if ($per->logo){
-                $old_logo = $per->logo;
-                $filepath = public_path() . DIRECTORY_SEPARATOR . '/assets/img/logopers/' . DIRECTORY_SEPARATOR .$per->logo;
-                try{
-                    File::delete($filepath);
-                }catch (FileNotFoundException $p){
-                    //file sudah dihapus
-                }
-            }
-            $per->logo = $filename;
-        }
+        //     //hapus foto lama
+        //     if ($per->logo){
+        //         $old_logo = $per->logo;
+        //         $filepath = public_path() . DIRECTORY_SEPARATOR . '/assets/img/logopers/' . DIRECTORY_SEPARATOR .$per->logo;
+        //         try{
+        //             File::delete($filepath);
+        //         }catch (FileNotFoundException $p){
+        //             //file sudah dihapus
+        //         }
+        //     }
+        //     $per->logo = $filename;
+        // }
         return redirect()->route('perusahaan.index');
     }
 

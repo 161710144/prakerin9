@@ -154,7 +154,7 @@ a.more-link {
   letter-spacing: 1px;
 }
 </style>
-<h1>404 Error Page #2</h1>
+<h1>404 Error Page</h1>
 <p class="zoom-area"><b>CSS</b> animations to make a cool 404 page. </p>
 <section class="error-container">
   <span class="four"><span class="screen-reader-text">4</span></span>

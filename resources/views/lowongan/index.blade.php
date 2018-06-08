@@ -5,13 +5,15 @@
 	<div class="container">
 	<div class="col-md-16">
 			<div class="panel panel-success">
-			  <div class="panel-heading"><font color ="blue">Data Lowongan </font>
-			  	<div class="panel-title pull-right"><a href="{{ route('lowongan.create') }}">Tambah</a>
+			  <div class="panel-heading"><a href="{{ route('lowongan.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small"> <i class="zmdi zmdi-plus"></i> Add</a>
+			  	
 			  	</div>
-			  </div>
-			  <div class="panel-body">
-			  	<div class="table-responsive">
-				  <table class="table">
+			  
+			  <div class="row">
+     			<div class="col-md-12">
+                 <!-- DATA TABLE-->
+                   <div class="table-responsive m-b-40">
+					<table class="table table-data2">
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
@@ -33,16 +35,13 @@
 				    	<td>{{ $data->nama_low }}</td>
 				    	<td>{{ $data->tgl_mulai }}</td>
 				    	<td>{{ $data->lokasi }}</td>
-				    	<td>{{ $data->gaji }}</td>
+				    	<td>Rp.{{ $data->gaji }}</td>
 				    	<td>{{ $data->deskripsi_iklan }}</td>
 				    	<td><p>{{ $data->Perusahaan->deskripsi }}</p></td>
 				    	
            
 <td>
 	<a class="btn btn-warning" href="{{ route('lowongan.edit',$data->id) }}">Edit</a>
-</td>
-<td>
-	<a href="{{ route('lowongan.show',$data->id) }}" class="btn btn-success">Show</a>
 </td>
 <td>
 	<form method="post" action="{{ route('lowongan.destroy',$data->id) }}">

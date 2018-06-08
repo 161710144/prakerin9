@@ -3,19 +3,21 @@
 
 	<div class="row">
 	<div class="container">
-		<div class="col-md-16">
-			<div class="panel panel-primary">
-			  <div class="panel-heading"><font color ="blue"><h2>Data perusahaan </h2></font>
-			  	<button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"><a href="{{ route('perusahaan.create') }}">Tambah</i></a></button>
-			  	<div class="panel-title pull-right">
+	<div class="col-md-16">
+			<div class="panel panel-success">
+			  <div class="panel-heading"><a href="{{ route('perusahaan.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small"> <i class="zmdi zmdi-plus"></i> Add</a>
+			  	
 			  	</div>
-			  </div>
-			  <div class="panel-body">
-			  	<div class="table-responsive table-style5">
-                    <table class="table table-data2">
+			  
+			 <div class="row">
+     			<div class="col-md-12">
+                 <!-- DATA TABLE-->
+                   <div class="table-responsive m-b-40">
+					<table class="table table-data2">
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
+			  		  <th>Nama perusahaan</th>
 					  <th>Logo</th>
 					  <th>Deskripsi</th>
 					  <th>Kategori</th>
@@ -25,7 +27,7 @@
 					  <th>Tanggal Mulai</th>
 					  <th>Email</th>
 					  <th>Telepon</th>
-					  <th>Name</th>
+					  <th>Username</th>
 					  <th colspan="3">Action</th>
 			  		</tr>
 				  	</thead>
@@ -35,7 +37,8 @@
 				  		@foreach($per as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td><img src="{{ asset('assets/img/logopers/'.$data->logo) }}" style="max-height:150px;max-width:150px;margin-top:7px;" /></td>
+				    	<td>{{ $data->nama_pers }}</td>
+				    	<td><img src="{{ asset('assets/img/logopers/'.$data->logo) }}" style="max-height:70px;max-width:70px;margin-top:7px;" /></td>
 				    	<td>{{ $data->deskripsi }}</td>
 				    	<td>{{ $data->kategori }}</td>
 				    	<td>{{ $data->subkategori }}</td>
@@ -47,9 +50,6 @@
 				    	<td><p>{{ $data->User->name }}</p></td>
 <td>
 	<a class="btn btn-warning" href="{{ route('perusahaan.edit',$data->id) }}">Edit</a>
-</td>
-<td>
-	<a href="{{ route('perusahaan.show',$data->id) }}" class="btn btn-success">Show</a>
 </td>
 <td>
 	<form method="post" action="{{ route('perusahaan.destroy',$data->id) }}">

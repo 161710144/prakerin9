@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Perusahaan extends Model
 {
-    protected $fillable = ['logo','deskripsi','kategori','subkategori','judul','gaji','tgl_mulai','email','telepon','user_id'];
+    protected $fillable = ['nama_pers','logo','deskripsi','kategori','subkategori','judul','gaji','tgl_mulai','email','telepon','user_id'];
     public $timestamps = true;
 
     public function User(){

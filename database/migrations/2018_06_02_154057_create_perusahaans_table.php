@@ -15,6 +15,7 @@ class CreatePerusahaansTable extends Migration
     {
         Schema::create('perusahaans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nama_pers');
             $table->string('logo');
             $table->text('deskripsi');
             $table->string('kategori');

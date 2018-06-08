@@ -42,7 +42,7 @@ class MemberController extends Controller
        $this->validate($request,[
             'foto' => 'required|',
             'alamat' => 'required|',
-            'user_id' => 'required'
+            'user_id' => 'required|'
         ]);
         $mem = new Member;
         $mem->foto = $request->foto;
@@ -53,6 +53,14 @@ class MemberController extends Controller
         "level"=>"success",
         "message"=>"Berhasil menyimpan <b>$mem->email</b>"
         ]);
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = str_random(6).'_'.$file->getClientOriginalName();
+            $destinationPath = public_path().'/assets/img/fotomem/';
+            $uploadSucces = $file->move($destinationPath, $filename);
+            $mem->foto = $filename;
+        }
+        $mem->save();
         return redirect()->route('member.index');
     }
 
@@ -92,12 +100,10 @@ class MemberController extends Controller
     public function update(Request $request,$id)
     {
         $this->validate($request,[
-            'foto' => 'required|',
             'alamat' => 'required|',
             'user_id' => 'required'
         ]);
         $mem = Member::findOrFail($id);
-        $mem->foto = $request->foto;
         $mem->alamat = $request->alamat;
         $mem->user_id = $request->user_id;
         $mem->save();

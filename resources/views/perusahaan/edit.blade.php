@@ -3,8 +3,8 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-			<div class="panel panel-primary">
-			  <div class="panel-heading">Edit Data Perusahaan
+			<div class="panel panel-active">
+			  <div class="panel-heading">
 			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
 			  	</div>
 			  </div>
@@ -12,16 +12,16 @@
 			  	<form action="{{ route('perusahaan.update',$per->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
         			{{ csrf_field() }}
-			  		<div class="form-group {{ $errors->has('logo') ? ' has-error' : '' }}">
-			  			<label class="control-label">Logo</label>	
-			  			<input type="file" name="logo" value="{{ $per->logo }}" class="form-control"  required>
-			  			@if ($errors->has('logo'))
+			  		
+        			<div class="form-group {{ $errors->has('nama_pers') ? ' has-error' : '' }}">
+			  			<label class="control-label">Nama perusahaan</label>	
+			  			<input type="text" name="nama_pers" value="{{ $per->nama_pers }}" class="form-control"  required>
+			  			@if ($errors->has('nama_pers'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('logo') }}</strong>
+                                <strong>{{ $errors->first('nama_pers') }}</strong>
                             </span>
                         @endif
 			  		</div>
-
 					<div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
 			  			<label class="control-label">Deskripsi</label>	
 			  			<input type="text" name="deskripsi" value="{{ $per->deskripsi }}" class="form-control"  required>

@@ -3,18 +3,18 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-			<div class="panel panel-primary">
-			  <div class="panel-heading">Edit Data Lamaran 
-			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
+			<div class="panel panel-active">
+			  <div class="panel-heading">
+			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Back</a>
 			  	</div>
 			  </div>
 			  <div class="panel-body">
-			  	<form action="{{ route('lamaran.update',$lar->id) }}" method="post" >
+			  	<form action="{{ route('lamaran.update',$lar->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
         			{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('file_cv') ? ' has-error' : '' }}">
 			  			<label class="control-label">File Cv</label>	
-			  			<input type="text" name="file_cv" class="form-control" value="{{ $lar->file_cv }}" required>
+			  			<input type="file" name="file_cv" class="form-control" value="{{ $lar->file_cv }}" required>
 			  			@if ($errors->has('file_cv'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('file_cv') }}</strong>
@@ -47,7 +47,7 @@
 			  		</div>
 			  		
 			  		<div class="form-group">
-			  			<button type="submit" class="btn btn-primary">Simpan</button>
+			  			<button type="submit" class="btn btn-primary">Save</button>
 			  		</div>
 			  	</form>
 			  </div>

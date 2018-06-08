@@ -3,9 +3,9 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-			<div class="panel panel-primary">
-			  <div class="panel-heading">Show Data Lamaran 
-			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Kembali</a>
+			<div class="panel panel-active">
+			  <div class="panel-heading">
+			  	<div class="panel-title pull-right"><a href="{{ url()->previous() }}">Back</a>
 			  	</div>
 			  </div>
 			  <div class="panel-body">
